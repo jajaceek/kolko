@@ -3,9 +3,8 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
-public class TicTacToe implements ActionListener {
+public class TicTacToe implements ActionListener, MouseListener {
 
-    Random random = new Random();
     JFrame frame = new JFrame("Kółko i krzyżyk");
     JPanel title_panel = new JPanel();
     JPanel button_panel = new JPanel();
@@ -36,7 +35,9 @@ public class TicTacToe implements ActionListener {
     boolean possbleWinDiag0 = false;
     boolean possbleWinDiag1 = false;
 
+
     TicTacToe() {
+
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
@@ -97,7 +98,8 @@ public class TicTacToe implements ActionListener {
         title_panel.setBounds(0, 0, 600, 100);
 
         button_panel.setLayout(new GridLayout(3, 3));
-        button_panel.setBackground(new Color(150, 150, 150));
+//        button_panel.setBackground(new Color(150, 150, 150));
+        button_panel.setBackground(new Color(165, 93, 4));
 
         for (int i = 0; i < 9; i++) {
             buttons[i] = new JButton();
@@ -108,6 +110,7 @@ public class TicTacToe implements ActionListener {
             buttons[i].setBorder(BorderFactory.createRaisedBevelBorder());
             buttons[i].setFocusable(false);
             buttons[i].addActionListener(this);
+            buttons[i].addMouseListener(this);
         }
 
 
@@ -785,4 +788,37 @@ public class TicTacToe implements ActionListener {
 
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+        for (int i = 0; i < 9; i++) {
+            if (e.getSource() == buttons[i]) {
+                Color color;
+                color = buttons[i].getBackground();
+                buttons[i].setBackground(color);
+                System.out.println(color.toString());
+            }
+        }
+
+        System.out.println("pressed");
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
