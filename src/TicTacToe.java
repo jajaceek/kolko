@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 
 public class TicTacToe implements ActionListener, MouseListener {
@@ -17,7 +16,6 @@ public class TicTacToe implements ActionListener, MouseListener {
     JLabel textButtonField1 = new JLabel();
     JLabel textButtonField2 = new JLabel();
     JButton[] buttons = new JButton[9];
-    JButton[] levelButtons = new JButton[3];
     boolean player1_turn = true;
     ButtonGroup group = new ButtonGroup();
     boolean isEasy = false;
@@ -26,14 +24,14 @@ public class TicTacToe implements ActionListener, MouseListener {
     boolean isWinX = false;
     boolean isWinO = false;
     boolean isDraw = false;
-    boolean possbleWinCol0 = false;
-    boolean possbleWinCol1 = false;
-    boolean possbleWinCol2 = false;
-    boolean possbleWinRow0 = false;
-    boolean possbleWinRow1 = false;
-    boolean possbleWinRow2 = false;
-    boolean possbleWinDiag0 = false;
-    boolean possbleWinDiag1 = false;
+    boolean possibleWinCol0 = false;
+    boolean possibleWinCol1 = false;
+    boolean possibleWinCol2 = false;
+    boolean possibleWinRow0 = false;
+    boolean possibleWinRow1 = false;
+    boolean possibleWinRow2 = false;
+    boolean possibleWinDiag0 = false;
+    boolean possibleWinDiag1 = false;
 
 
     TicTacToe() {
@@ -73,6 +71,7 @@ public class TicTacToe implements ActionListener, MouseListener {
         choicePanel.setLayout(new GridLayout(0, 3));
         choicePanel.setBounds(0, 0, 600, 75);
         choicePanel.setBorder(BorderFactory.createLineBorder(new Color(89, 53, 9)));
+        choicePanel.setBackground(new Color(89,53,9));
 
         easyButton.setBackground(new Color(216, 113, 54));
         easyButton.setBorder(BorderFactory.createLineBorder(new Color(89, 53, 9)));
@@ -291,21 +290,21 @@ public class TicTacToe implements ActionListener, MouseListener {
         checkPossibleWin();
         if (isDraw || isWinO || isWinX) {
             System.out.println("pierwszy if - win or draw");
-        } else if (possbleWinCol0 || possbleWinCol1 || possbleWinCol2 ||
-                possbleWinRow0 || possbleWinRow1 || possbleWinRow2 ||
-                possbleWinDiag0 || possbleWinDiag1) {
+        } else if (possibleWinCol0 || possibleWinCol1 || possibleWinCol2 ||
+                possibleWinRow0 || possibleWinRow1 || possibleWinRow2 ||
+                possibleWinDiag0 || possibleWinDiag1) {
             System.out.println("drugi if - possible win");
             revangeMove();
             check();
             Draw();
-            possbleWinCol0 = false;
-            possbleWinCol1 = false;
-            possbleWinCol2 = false;
-            possbleWinRow0 = false;
-            possbleWinRow1 = false;
-            possbleWinRow2 = false;
-            possbleWinDiag0 = false;
-            possbleWinDiag1 = false;
+            possibleWinCol0 = false;
+            possibleWinCol1 = false;
+            possibleWinCol2 = false;
+            possibleWinRow0 = false;
+            possibleWinRow1 = false;
+            possibleWinRow2 = false;
+            possibleWinDiag0 = false;
+            possibleWinDiag1 = false;
 //        } else if (buttons[4].getText() != "X" && buttons[4].getText() != "O") {
 //            System.out.println("trzeci if - button[4]");
 //            buttons[4].setForeground(new Color(0, 0, 255));
@@ -344,21 +343,21 @@ public class TicTacToe implements ActionListener, MouseListener {
         checkPossibleWin();
         if (isDraw || isWinO || isWinX) {
             System.out.println("pierwszy if - win or draw");
-        } else if (possbleWinCol0 || possbleWinCol1 || possbleWinCol2 ||
-                possbleWinRow0 || possbleWinRow1 || possbleWinRow2 ||
-                possbleWinDiag0 || possbleWinDiag1) {
+        } else if (possibleWinCol0 || possibleWinCol1 || possibleWinCol2 ||
+                possibleWinRow0 || possibleWinRow1 || possibleWinRow2 ||
+                possibleWinDiag0 || possibleWinDiag1) {
             System.out.println("drugi if - possible win");
             revangeMove();
             check();
             Draw();
-            possbleWinCol0 = false;
-            possbleWinCol1 = false;
-            possbleWinCol2 = false;
-            possbleWinRow0 = false;
-            possbleWinRow1 = false;
-            possbleWinRow2 = false;
-            possbleWinDiag0 = false;
-            possbleWinDiag1 = false;
+            possibleWinCol0 = false;
+            possibleWinCol1 = false;
+            possibleWinCol2 = false;
+            possibleWinRow0 = false;
+            possibleWinRow1 = false;
+            possibleWinRow2 = false;
+            possibleWinDiag0 = false;
+            possibleWinDiag1 = false;
         } else if (buttons[4].getText() != "X" && buttons[4].getText() != "O") {
             System.out.println("trzeci if - button[4]");
             buttons[4].setForeground(new Color(0, 0, 255));
@@ -406,14 +405,14 @@ public class TicTacToe implements ActionListener, MouseListener {
         isWinX = false;
         isWinO = false;
         isDraw = false;
-        possbleWinCol0 = false;
-        possbleWinCol1 = false;
-        possbleWinCol2 = false;
-        possbleWinRow0 = false;
-        possbleWinRow1 = false;
-        possbleWinRow2 = false;
-        possbleWinDiag0 = false;
-        possbleWinDiag1 = false;
+        possibleWinCol0 = false;
+        possibleWinCol1 = false;
+        possibleWinCol2 = false;
+        possibleWinRow0 = false;
+        possibleWinRow1 = false;
+        possibleWinRow2 = false;
+        possibleWinDiag0 = false;
+        possibleWinDiag1 = false;
 
         for (int i = 0; i < 9; i++) {
             buttons[i].setEnabled(true);
@@ -517,16 +516,16 @@ public class TicTacToe implements ActionListener, MouseListener {
     public void xWins(int a, int b, int c) {
 
         if (!isDraw) {
-            buttons[a].setBackground(new Color(242, 212, 186));
-            buttons[b].setBackground(new Color(242, 212, 186));
-            buttons[c].setBackground(new Color(242, 212, 186));
-            buttons[a].setForeground(new Color(0, 255, 0));
             for (int i = 0; i < 9; i++) {
                 buttons[i].setEnabled(false);
             }
+            buttons[a].setBackground(new Color(242, 212, 186));
+            buttons[b].setBackground(new Color(242, 212, 186));
+            buttons[c].setBackground(new Color(242, 212, 186));
             textField.setText("Wygrał X");
-//            resetButton.setEnabled(false);
             isWinX = true;
+
+            UIManager.put("Button.disabledText", new Color(165,93,4));
         }
     }
 
@@ -542,12 +541,12 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[i].setEnabled(false);
             }
             textField.setFont(new Font("Arial", Font.BOLD, 25));
-
             textField.setText("Ja wiedziałem, że nie wygrasz");
             textField.setFont(new Font("Arial", Font.BOLD, 25));
 
-            //            resetButton.setEnabled(false);
             isWinO = true;
+            UIManager.put("Button.disabledText", new Color(165,93,4));
+
         }
     }
 
@@ -561,11 +560,11 @@ public class TicTacToe implements ActionListener, MouseListener {
 
         if (counter == 9 && !isWinX && !isWinO) {
             textField.setText("Remis");
-//            resetButton.setEnabled(false);
             for (int i = 0; i < 9; i++) {
                 buttons[i].setEnabled(false);
             }
             isDraw = true;
+            UIManager.put("Button.disabledText", new Color(165,93,4));
         }
     }
 
@@ -609,28 +608,28 @@ public class TicTacToe implements ActionListener, MouseListener {
 
         if (button0 + button1 + button2 == 2 && buttons[0].getText() != "O" && buttons[1].getText() != "O" && buttons[2].getText() != "O"
                 && (buttons[0].getText() == "" || buttons[1].getText() == "" || buttons[2].getText() == "")) {
-            possbleWinRow0 = true;
+            possibleWinRow0 = true;
         } else if (button3 + button4 + button5 == 2 && buttons[3].getText() != "O" && buttons[4].getText() != "O" && buttons[5].getText() != "O"
                 && (buttons[3].getText() == "" || buttons[4].getText() == "" || buttons[5].getText() == "")) {
-            possbleWinRow1 = true;
+            possibleWinRow1 = true;
         } else if (button6 + button7 + button8 == 2 && buttons[6].getText() != "O" && buttons[7].getText() != "O" && buttons[8].getText() != "O"
                 && (buttons[6].getText() == "" || buttons[7].getText() == "" || buttons[8].getText() == "")) {
-            possbleWinRow2 = true;
+            possibleWinRow2 = true;
         } else if (button0 + button3 + button6 == 2 && buttons[0].getText() != "O" && buttons[3].getText() != "O" && buttons[6].getText() != "O"
                 && (buttons[0].getText() == "" || buttons[3].getText() == "" || buttons[6].getText() == "")) {
-            possbleWinCol0 = true;
+            possibleWinCol0 = true;
         } else if (button1 + button4 + button7 == 2 && buttons[1].getText() != "O" && buttons[4].getText() != "O" && buttons[7].getText() != "O"
                 && (buttons[1].getText() == "" || buttons[4].getText() == "" || buttons[7].getText() == "")) {
-            possbleWinCol1 = true;
+            possibleWinCol1 = true;
         } else if (button2 + button5 + button8 == 2 && buttons[2].getText() != "O" && buttons[5].getText() != "O" && buttons[8].getText() != "O"
                 && (buttons[2].getText() == "" || buttons[5].getText() == "" || buttons[8].getText() == "")) {
-            possbleWinCol2 = true;
+            possibleWinCol2 = true;
         } else if (button0 + button4 + button8 == 2 && buttons[0].getText() != "O" && buttons[4].getText() != "O" && buttons[8].getText() != "O"
                 && (buttons[0].getText() == "" || buttons[4].getText() == "" || buttons[8].getText() == "")) {
-            possbleWinDiag0 = true;
+            possibleWinDiag0 = true;
         } else if (button2 + button4 + button6 == 2 && buttons[2].getText() != "O" && buttons[4].getText() != "O" && buttons[6].getText() != "O"
                 && (buttons[2].getText() == "" || buttons[4].getText() == "" || buttons[6].getText() == "")) {
-            possbleWinDiag1 = true;
+            possibleWinDiag1 = true;
         }
 
 
@@ -639,17 +638,17 @@ public class TicTacToe implements ActionListener, MouseListener {
 
     public void revangeMove() {
 
-        System.out.println(possbleWinCol0 + " col 0");
-        System.out.println(possbleWinCol1 + " col 1");
-        System.out.println(possbleWinCol2 + " col 2");
-        System.out.println(possbleWinRow0 + " row 0");
-        System.out.println(possbleWinRow1 + " row 1");
-        System.out.println(possbleWinRow2 + " row 2");
-        System.out.println(possbleWinDiag0 + " diag 0");
-        System.out.println(possbleWinDiag1 + " diag 1");
+        System.out.println(possibleWinCol0 + " col 0");
+        System.out.println(possibleWinCol1 + " col 1");
+        System.out.println(possibleWinCol2 + " col 2");
+        System.out.println(possibleWinRow0 + " row 0");
+        System.out.println(possibleWinRow1 + " row 1");
+        System.out.println(possibleWinRow2 + " row 2");
+        System.out.println(possibleWinDiag0 + " diag 0");
+        System.out.println(possibleWinDiag1 + " diag 1");
 
 
-        if (possbleWinCol0) {
+        if (possibleWinCol0) {
             if (buttons[0].getText() == "") {
                 buttons[0].setText("O");
                 buttons[0].setForeground(new Color(0, 0, 255));
@@ -666,7 +665,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[6].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinCol1) {
+        if (possibleWinCol1) {
             if (buttons[1].getText() == "") {
                 buttons[1].setText("O");
                 buttons[1].setForeground(new Color(0, 0, 255));
@@ -683,7 +682,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[7].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinCol2) {
+        if (possibleWinCol2) {
             if (buttons[2].getText() == "") {
                 buttons[2].setText("O");
                 buttons[2].setForeground(new Color(0, 0, 255));
@@ -700,7 +699,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[8].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinRow0) {
+        if (possibleWinRow0) {
             if (buttons[0].getText() == "") {
                 buttons[0].setText("O");
                 buttons[0].setForeground(new Color(0, 0, 255));
@@ -717,7 +716,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[2].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinRow1) {
+        if (possibleWinRow1) {
             if (buttons[3].getText() == "") {
                 buttons[3].setText("O");
                 buttons[3].setForeground(new Color(0, 0, 255));
@@ -734,7 +733,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[5].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinRow2) {
+        if (possibleWinRow2) {
             if (buttons[6].getText() == "") {
                 buttons[6].setText("O");
                 buttons[6].setForeground(new Color(0, 0, 255));
@@ -751,7 +750,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[8].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinDiag0) {
+        if (possibleWinDiag0) {
             if (buttons[0].getText() == "") {
                 buttons[0].setText("O");
                 buttons[0].setForeground(new Color(0, 0, 255));
@@ -768,7 +767,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[8].setBackground(new Color(165, 145, 158));
             }
         }
-        if (possbleWinDiag1) {
+        if (possibleWinDiag1) {
             if (buttons[2].getText() == "") {
                 buttons[2].setText("O");
                 buttons[2].setForeground(new Color(0, 0, 255));
