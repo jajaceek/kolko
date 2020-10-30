@@ -1,8 +1,12 @@
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class TicTacToe implements ActionListener, MouseListener {
+
+public class TicTacToeMinMax implements ActionListener, MouseListener {
 
     JFrame frame = new JFrame("Kółko i krzyżyk");
     JPanel title_panel = new JPanel();
@@ -34,7 +38,7 @@ public class TicTacToe implements ActionListener, MouseListener {
     boolean possibleWinDiag1 = false;
 
 
-    TicTacToe() {
+    TicTacToeMinMax() {
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +75,7 @@ public class TicTacToe implements ActionListener, MouseListener {
         choicePanel.setLayout(new GridLayout(0, 3));
         choicePanel.setBounds(0, 0, 600, 75);
         choicePanel.setBorder(BorderFactory.createLineBorder(new Color(89, 53, 9)));
-        choicePanel.setBackground(new Color(89,53,9));
+        choicePanel.setBackground(new Color(89, 53, 9));
 
         easyButton.setBackground(new Color(216, 113, 54));
         easyButton.setBorder(BorderFactory.createLineBorder(new Color(89, 53, 9)));
@@ -334,6 +338,8 @@ public class TicTacToe implements ActionListener, MouseListener {
     }
 
     public void hardMode() {
+        int deepLevel = 0;
+        int deepScore = 0;
 //        reset();
 //        isHard = true;
         isEasy = false;
@@ -472,6 +478,7 @@ public class TicTacToe implements ActionListener, MouseListener {
             xWins(2, 4, 6);
         }
 
+
         if ((buttons[0].getText() == "O") && (buttons[1].getText() == "O") && (buttons[2].getText() == "O")) {
             oWins(0, 1, 2);
         }
@@ -510,7 +517,7 @@ public class TicTacToe implements ActionListener, MouseListener {
             textField.setText("Wygrał X");
             isWinX = true;
 
-            UIManager.put("Button.disabledText", new Color(165,93,4));
+            UIManager.put("Button.disabledText", new Color(165, 93, 4));
         }
     }
 
@@ -521,7 +528,6 @@ public class TicTacToe implements ActionListener, MouseListener {
             buttons[b].setBackground(new Color(242, 212, 186));
             buttons[c].setBackground(new Color(242, 212, 186));
 
-
             for (int i = 0; i < 9; i++) {
                 buttons[i].setEnabled(false);
             }
@@ -530,7 +536,7 @@ public class TicTacToe implements ActionListener, MouseListener {
             textField.setFont(new Font("Arial", Font.BOLD, 25));
 
             isWinO = true;
-            UIManager.put("Button.disabledText", new Color(165,93,4));
+            UIManager.put("Button.disabledText", new Color(165, 93, 4));
 
         }
     }
@@ -549,7 +555,7 @@ public class TicTacToe implements ActionListener, MouseListener {
                 buttons[i].setEnabled(false);
             }
             isDraw = true;
-            UIManager.put("Button.disabledText", new Color(165,93,4));
+            UIManager.put("Button.disabledText", new Color(165, 93, 4));
         }
     }
 
@@ -788,7 +794,7 @@ public class TicTacToe implements ActionListener, MouseListener {
             }
         }
 
-        System.out.println("mousePressed");
+        System.out.println("pressed");
     }
 
     @Override
